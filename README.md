@@ -73,9 +73,9 @@ Make sure you specify all your plugins in each of your environments.
 
 The following options are available:
 
-* `deployer` Deployer name to add to the deployMetaData, defaults to `git config --global user.name`
-* `merges`  Add true if you would like to include merges in the change-log data.
-* `defaultRange` if there is no current active revision, the number of revisions to show in the change-log, defaults to 10.
+* `deployer` Name of the deployer, defaults to `git config --global user.name`
+* `merges` Set to true if you would like to include merges in the change-log data.
+* `defaultRange` If there is no current active revision, the number of revisions to show in the change-log, defaults to 10.
 * `changelog` an object with arbitrary keys and git log pretty-format [placeholders](http://git-scm.com/docs/pretty-formats) as the values. Defaults to:
 ```javascript
 {
@@ -90,7 +90,7 @@ You can also add these optional flags:
   * `--summary` adds a summary message to the deployMetaData.
 
 ## Results
-Adds an object with the following properties to the deployment context.
+Adds deployMetaData object with the following properties to the deployment context.
 
 * `deployer` string with the deployer name.
 * `summary` string with message from the `--summary` flag.
