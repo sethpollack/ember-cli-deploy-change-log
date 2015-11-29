@@ -2,6 +2,8 @@
 
 > WARNING: This plugin is only compatible with ember-cli-deploy versions >= 0.5.0
 
+> WARNING This plugin requires your upload plugin to set `revisionsData.initialActiveRevisionKey`.
+
 ###Install
 
 You should already have `ember-cli-deploy` installed but if you don't:
