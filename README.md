@@ -1,3 +1,9 @@
+[![ember-cli-deploy-change-log](http://img.shields.io/npm/v/ember-cli-deploy-change-log.svg?style=flat-square)](https://www.npmjs.com/package/ember-cli-deploy-change-log)
+[![ember-cli-deploy-change-log](http://img.shields.io/npm/dm/ember-cli-deploy-change-log.svg?style=flat-square)](https://www.npmjs.com/package/ember-cli-deploy-change-log)
+[![ember-cli-deploy-change-log](http://img.shields.io/npm/l/ember-cli-deploy-change-log.svg?style=flat-square)](https://www.npmjs.com/package/ember-cli-deploy-change-log)
+[![code climate](https://img.shields.io/codeclimate/github/sethpollack/ember-cli-deploy-change-log.svg?style=flat-square)](https://codeclimate.com/github/sethpollack/ember-cli-deploy-change-log)
+
+
 # ember-cli-deploy-change-log
 
 > WARNING: This plugin is only compatible with ember-cli-deploy versions >= 0.5.0
