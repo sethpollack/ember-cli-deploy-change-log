@@ -98,7 +98,7 @@ You can also add these optional flags:
   * `--summary` adds a summary message to the deployMetaData.
 
 ## Results
-Adds deployMetaData object with the following properties to the deployment context.
+Adds `deployMetaData` object with the following properties to the deployment context.
 
 * `deployer` string with the deployer name.
 * `summary` string with message from the `--summary` flag.
