@@ -32,8 +32,12 @@ module.exports = {
           return context.summary || context.commandOptions.summary || '';
         },
 
-        activatedRevisionKey: function(context) {
-          return context.activatedRevisionKey || (context.revisionData && context.revisionData.activatedRevisionKey);
+        initialActiveRevisionKey: function(context) {
+          return context.initialActiveRevisionKey || (context.revisionData && context.revisionData.initialActiveRevisionKey);
+        },
+
+        revisionKey: function(context) {
+          return context.revisionKey || (context.revisionData && context.revisionData.revisionKey);
         },
 
         defaultRange: function(context) {
@@ -43,24 +47,11 @@ module.exports = {
 
       didUpload: function(context) {
         var changelogOptions = {
-          activatedRevisionKey: this.readConfig('initialActiveRevisionKey'),
-          revisionKey: this.readConfig('revisionKey'),
-          defaultRange: this.readConfig('defaultRange'),
-          changelog: this.readConfig('changelog'),
-          merges: this.readConfig('merges')
-        };
-
-        return this._createDeployMetaData.call(this, changelogOptions)
-          .catch(this._errorMessage.bind(this));
-      },
-
-      didActivate: function(context) {
-        var changelogOptions = {
           initialActiveRevisionKey: this.readConfig('initialActiveRevisionKey'),
           revisionKey: this.readConfig('revisionKey'),
           defaultRange: this.readConfig('defaultRange'),
           changelog: this.readConfig('changelog'),
-          merges: this.readConfig('merges')
+          merges: this.readConfig('merges'),
         };
 
         return this._createDeployMetaData.call(this, changelogOptions)
@@ -90,9 +81,10 @@ module.exports = {
 
         if (initialActiveRevisionKey && revisionKey) {
           range = initialActiveRevisionKey +".."+ revisionKey;
+        } else {
+          range = "-n" + range;
         }
 
-        range = "-n" + range;
         merges = merges ? '' : '--no merges';
 
         var changeLog = JSON.parse(syncExec("git log "+ range +" "+ merges +" --pretty=format:'"+ JSON.stringify(changelog) +",' $@ |     perl -pe 'BEGIN{print \"[\"}; END{print \"]\n\"}' |     perl -pe 's/},]/}]/'").stdout);
