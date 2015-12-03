@@ -17,7 +17,7 @@ module.exports = {
           revision: '%h',
           commit: '%H',
           author: '%an <%ae>',
-          message: '%f'
+          message: '%f',
         },
 
         deployer: function(context) {
@@ -80,14 +80,14 @@ module.exports = {
             merges                   = options.merges;
 
         if (initialActiveRevisionKey && revisionKey) {
-          range = initialActiveRevisionKey +".."+ revisionKey;
+          range = initialActiveRevisionKey + '..' + revisionKey;
         } else {
-          range = "-n" + range;
+          range = '-n' + range;
         }
 
         merges = merges ? '' : '--no merges';
 
-        var changeLog = JSON.parse(syncExec("git log "+ range +" "+ merges +" --pretty=format:'"+ JSON.stringify(changelog) +",' $@ |     perl -pe 'BEGIN{print \"[\"}; END{print \"]\n\"}' |     perl -pe 's/},]/}]/'").stdout);
+        var changeLog = JSON.parse(syncExec('git log ' + range + ' ' + merges + " --pretty=format:'" + JSON.stringify(changelog) + ",' $@ |     perl -pe 'BEGIN{print \"[\"}; END{print \"]\n\"}' |     perl -pe 's/},]/}]/'").stdout);
 
         return Promise.resolve(changeLog);
       },
@@ -95,9 +95,9 @@ module.exports = {
       _errorMessage: function(error) {
         this.log(error, { color: 'red' });
         return Promise.reject(error);
-      }
+      },
     });
 
     return new DeployPlugin();
-  }
+  },
 };
