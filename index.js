@@ -33,7 +33,21 @@ module.exports = {
         },
 
         initialActiveRevisionKey: function(context) {
-          return context.initialActiveRevisionKey || (context.revisionData && context.revisionData.initialActiveRevisionKey);
+          if (context.revisionData) {
+            if (context.revisionData.initialActiveRevisionKey) {
+              return context.revisionData.initialActiveRevisionKey;
+            }
+          }
+
+          if (context.revisions) {
+            var activeRevision = context.revisions.filter(function(revision) {
+              return revision.active;
+            });
+
+            if (activeRevision.length) {
+              return activeRevision[0].revision;
+            }
+          }
         },
 
         revisionKey: function(context) {
