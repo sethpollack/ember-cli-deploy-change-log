@@ -33,14 +33,8 @@ module.exports = {
         },
 
         initialActiveRevisionKey: function(context) {
-          if (context.revisionData) {
-            if (context.revisionData.initialActiveRevisionKey) {
-              return context.revisionData.initialActiveRevisionKey;
-            }
-          }
-
-          if (context.revisions) {
-            var activeRevision = context.revisions.filter(function(revision) {
+          if (context.revisionData && context.revisionData.initial) {
+            var activeRevision = context.revisionData.initial.filter(function(revision) {
               return revision.active;
             });
 
