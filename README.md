@@ -6,9 +6,9 @@
 
 # ember-cli-deploy-change-log
 
-> WARNING: This plugin is only compatible with ember-cli-deploy versions >= 0.5.0
+> WARNING: This plugin is only compatible with ember-cli-deploy versions >= 0.6.0
 
-> WARNING This plugin requires your upload plugin to set `revisionsData.initialActiveRevisionKey`.
+> WARNING This plugin requires your upload plugin to implement `fetchInitialRevisions`.
 
 ###Install
 
