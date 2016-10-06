@@ -25,7 +25,7 @@ module.exports = {
         },
 
         merges: function(context) {
-          return context || false;
+          return context.merges || false;
         },
 
         summary: function(context) {
