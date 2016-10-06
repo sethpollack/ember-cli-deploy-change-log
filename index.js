@@ -95,7 +95,7 @@ module.exports = {
 
         merges = merges ? '' : '--no merges';
 
-        var changeLog = JSON.parse(syncExec('git log ' + range + ' ' + merges + " --pretty=format:'" + JSON.stringify(changelog) + ",' $@ |     perl -pe 'BEGIN{print \"[\"}; END{print \"]\n\"}' |     perl -pe 's/},]/}]/'").stdout);
+        var changeLog = JSON.parse(syncExec('git log --format=medium' + range + ' ' + merges + " --pretty=format:'" + JSON.stringify(changelog) + ",' $@ |     perl -pe 'BEGIN{print \"[\"}; END{print \"]\n\"}' |     perl -pe 's/},]/}]/'").stdout);
 
         return Promise.resolve(changeLog);
       },
