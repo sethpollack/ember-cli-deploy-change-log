@@ -93,7 +93,7 @@ module.exports = {
           range = '-n' + range;
         }
 
-        merges = merges ? '' : '--no merges';
+        merges = merges ? '' : '--no-merges';
 
         var changeLog = JSON.parse(syncExec('git log --format=medium ' + range + ' ' + merges + " --pretty=format:'" + JSON.stringify(changelog) + ",' $@ |     perl -pe 'BEGIN{print \"[\"}; END{print \"]\n\"}' |     perl -pe 's/},]/}]/'").stdout);
 
